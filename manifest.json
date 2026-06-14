@@ -1,9 +1,10 @@
 {
-  "name": "TripoSR",
-  "version": "0.1.0",
+  "id": "modly-3d-generator",
+  "name": "TripoSR 3D Generator",
+  "version": "1.0.0",
   "description": "Image to 3D GLB model generator using TripoSR",
-  "author": "VAST-AI-Research",
-  "type": "image-to-3d",
+  "author": "mybsetym",
+  "type": "generator",
   "generator": "generator.py",
   "requirements": [
     "torch>=2.0.0",
@@ -19,8 +20,7 @@
   "model": {
     "name": "TripoSR",
     "repo_id": "stabilityai/TripoSR",
-    "filename": "model.fp16.safetensors",
-    "config": "config.yaml"
+    "filename": "model.fp16.safetensors"
   },
   "inputs": {
     "image": {
@@ -29,14 +29,13 @@
     },
     "prompt": {
       "type": "string",
-      "description": "Optional description for better segmentation",
-      "default": ""
+      "description": "Optional description for better segmentation"
     }
   },
   "outputs": {
     "model": {
       "type": "glb",
-      "description": "Generated 3D model in GLB format"
+      "description": "Generated 3D model"
     }
   }
 }
