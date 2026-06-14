@@ -3,7 +3,7 @@
   "name": "Image to 3D",
   "type": "generator",
   "generator_class": "ImageTo3DGenerator",
-  "entry": "processor.js",
+  "entry": "generator.py",
   "version": "1.0.0",
   "author": "mybsetym",
   "description": "Convert 2D images to 3D GLB models using AI",
@@ -30,10 +30,10 @@
             { "value": "low", "label": "Low (Fast)" },
             { "value": "medium", "label": "Medium" },
             { "value": "high", "label": "High (Slow)" }
-          ],
-          "tooltip": "Higher quality takes longer to generate"
+          ]
         }
       ]
     }
-  ]
+  ],
+  "source": "https://github.com/mybsetym/modly-3d-generator"
 }
