@@ -1,35 +1,38 @@
 {
-  "id": "modly-3d-generator",
-  "name": "TripoSR 3D Generator",
+  "id": "image-to-3d",
+  "name": "Image to 3D",
+  "type": "process",
+  "entry": "processor.js",
   "version": "1.0.0",
-  "description": "Image to 3D GLB model generator using TripoSR",
   "author": "mybsetym",
+  "description": "Convert 2D images to 3D GLB models using AI",
   "nodes": [
     {
-      "name": "Image to 3D",
-      "type": "generator",
-      "description": "Convert a 2D image to a 3D GLB model",
-      "inputs": [
+      "id": "generate-3d",
+      "name": "Generate 3D Model",
+      "input": "image",
+      "output": "mesh",
+      "params_schema": [
         {
-          "name": "image",
-          "type": "image",
-          "description": "Source image"
+          "id": "prompt",
+          "label": "Description",
+          "type": "string",
+          "default": "",
+          "tooltip": "Describe the object for better 3D generation"
         },
         {
-          "name": "prompt",
-          "type": "string",
-          "description": "Optional prompt for segmentation",
-          "default": ""
+          "id": "quality",
+          "label": "Quality",
+          "type": "select",
+          "default": "medium",
+          "options": [
+            { "value": "low", "label": "Low (Fast)" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "high", "label": "High (Slow)" }
+          ],
+          "tooltip": "Higher quality takes longer to generate"
         }
-      ],
-      "outputs": [
-        {
-          "name": "model",
-          "type": "mesh",
-          "description": "Generated 3D model"
-        }
-      ],
-      "generator": "generator.py"
+      ]
     }
   ]
 }
