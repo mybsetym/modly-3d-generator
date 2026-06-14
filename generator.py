@@ -2,14 +2,16 @@
 """Image to 3D GLB generator for Modly"""
 
 import os
-import sys
 import json
 import struct
+import time
 
 
 class ImageTo3DGenerator:
-    def __init__(self):
-        self.name = "Image to 3D"
+    def __init__(self, name, description, config):
+        self.name = name
+        self.description = description
+        self.config = config
 
     def process(self, input_data, params, context):
         image_path = input_data.get("filePath")
@@ -24,7 +26,7 @@ class ImageTo3DGenerator:
 
         model_dir = os.path.join(context.workspace_dir, "Models")
         os.makedirs(model_dir, exist_ok=True)
-        output_path = os.path.join(model_dir, f"model-{int(__import__('time').time()*1000)}.glb")
+        output_path = os.path.join(model_dir, f"model-{int(time.time()*1000)}.glb")
 
         context.progress(50, "Generating 3D mesh...")
 
@@ -98,4 +100,4 @@ class ImageTo3DGenerator:
 
 
 def create():
-    return ImageTo3DGenerator()
+    return ImageTo3DGenerator
