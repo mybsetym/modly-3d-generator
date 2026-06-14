@@ -4,38 +4,32 @@
   "version": "1.0.0",
   "description": "Image to 3D GLB model generator using TripoSR",
   "author": "mybsetym",
-  "type": "generator",
-  "generator": "generator.py",
-  "requirements": [
-    "torch>=2.0.0",
-    "torchvision",
-    "diffusers",
-    "transformers",
-    "huggingface-hub",
-    "pillow",
-    "numpy",
-    "trimesh",
-    "pygltflib"
-  ],
-  "model": {
-    "name": "TripoSR",
-    "repo_id": "stabilityai/TripoSR",
-    "filename": "model.fp16.safetensors"
-  },
-  "inputs": {
-    "image": {
-      "type": "image",
-      "description": "Source image for 3D generation"
-    },
-    "prompt": {
-      "type": "string",
-      "description": "Optional description for better segmentation"
+  "nodes": [
+    {
+      "name": "Image to 3D",
+      "type": "generator",
+      "description": "Convert a 2D image to a 3D GLB model",
+      "inputs": [
+        {
+          "name": "image",
+          "type": "image",
+          "description": "Source image"
+        },
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Optional prompt for segmentation",
+          "default": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "mesh",
+          "description": "Generated 3D model"
+        }
+      ],
+      "generator": "generator.py"
     }
-  },
-  "outputs": {
-    "model": {
-      "type": "glb",
-      "description": "Generated 3D model"
-    }
-  }
+  ]
 }
