@@ -1,7 +1,8 @@
 {
   "id": "image-to-3d",
   "name": "Image to 3D",
-  "type": "process",
+  "type": "generator",
+  "generator_class": "ImageTo3DGenerator",
   "entry": "processor.js",
   "version": "1.0.0",
   "author": "mybsetym",
